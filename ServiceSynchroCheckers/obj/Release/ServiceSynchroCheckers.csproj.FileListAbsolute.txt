@@ -1,0 +1,6 @@
+C:\Users\Charline\source\repos\ServiceSynchroCheckers\ServiceSynchroCheckers\bin\ServiceSynchroCheckers.dll.config
+C:\Users\Charline\source\repos\ServiceSynchroCheckers\ServiceSynchroCheckers\bin\ServiceSynchroCheckers.dll
+C:\Users\Charline\source\repos\ServiceSynchroCheckers\ServiceSynchroCheckers\bin\ServiceSynchroCheckers.pdb
+C:\Users\Charline\source\repos\ServiceSynchroCheckers\ServiceSynchroCheckers\obj\Release\ServiceSynchroCheckers.csproj.CoreCompileInputs.cache
+C:\Users\Charline\source\repos\ServiceSynchroCheckers\ServiceSynchroCheckers\obj\Release\ServiceSynchroCheckers.dll
+C:\Users\Charline\source\repos\ServiceSynchroCheckers\ServiceSynchroCheckers\obj\Release\ServiceSynchroCheckers.pdb
