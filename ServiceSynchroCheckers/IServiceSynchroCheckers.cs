@@ -12,36 +12,20 @@ namespace ServiceSynchroCheckers
     [ServiceContract]
     public interface IServiceSynchroCheckers
     {
+        [OperationContract]
+        User GetUserByIdUser(int idUser);
 
         [OperationContract]
-        string GetData(int value);
+        bool AddUser(User user);
 
         [OperationContract]
-        CompositeType GetDataUsingDataContract(CompositeType composite);
+        bool UpdateUser(User user);
+
+        [OperationContract]
+        bool DeleteUser(int id);
 
         // TODO: ajoutez vos opérations de service ici
+        // Mettre tout les methode que l'on souhaite faire passer
     }
 
-
-    // Utilisez un contrat de données comme indiqué dans l'exemple ci-après pour ajouter les types composites aux opérations de service.
-    [DataContract]
-    public class CompositeType
-    {
-        bool boolValue = true;
-        string stringValue = "Hello ";
-
-        [DataMember]
-        public bool BoolValue
-        {
-            get { return boolValue; }
-            set { boolValue = value; }
-        }
-
-        [DataMember]
-        public string StringValue
-        {
-            get { return stringValue; }
-            set { stringValue = value; }
-        }
-    }
 }

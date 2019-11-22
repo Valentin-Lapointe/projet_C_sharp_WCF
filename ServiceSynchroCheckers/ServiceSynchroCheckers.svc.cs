@@ -12,22 +12,41 @@ namespace ServiceSynchroCheckers
     // REMARQUE : pour lancer le client test WCF afin de tester ce service, sélectionnez Service1.svc ou Service1.svc.cs dans l'Explorateur de solutions et démarrez le débogage.
     public class ServiceSynchroCheckers : IServiceSynchroCheckers
     {
-        public string GetData(int value)
+        public bool AddUser(User user)
         {
-            return string.Format("You entered: {0}", value);
+            bool ok = false;
+            if(user != null)
+            {
+                ok = new User().AddUser(user);
+            }
+            return ok;
         }
 
-        public CompositeType GetDataUsingDataContract(CompositeType composite)
+        public bool DeleteUser(int id)
         {
-            if (composite == null)
+            bool ok = false;
+            if (id != 0)
             {
-                throw new ArgumentNullException("composite");
+                ok = new User().DeleteUser(id);
             }
-            if (composite.BoolValue)
+            return ok;
+        }
+
+        public User GetUserByIdUser(int id)
+        {
+            User user = new User();
+            user = new User().GetUserById(id);
+            return user;
+        }
+
+        public bool UpdateUser(User user)
+        {
+            bool ok = false;
+            if (user != null)
             {
-                composite.StringValue += "Suffix";
+                ok = new User().AddUser(user);
             }
-            return composite;
+            return ok;
         }
     }
 }

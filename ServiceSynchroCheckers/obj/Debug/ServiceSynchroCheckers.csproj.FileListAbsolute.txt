@@ -5,3 +5,6 @@ C:\Users\Charline\source\repos\ServiceSynchroCheckers\ServiceSynchroCheckers\obj
 C:\Users\Charline\source\repos\ServiceSynchroCheckers\ServiceSynchroCheckers\obj\Debug\ServiceSynchroCheckers.csproj.CoreCompileInputs.cache
 C:\Users\Charline\source\repos\ServiceSynchroCheckers\ServiceSynchroCheckers\obj\Debug\ServiceSynchroCheckers.dll
 C:\Users\Charline\source\repos\ServiceSynchroCheckers\ServiceSynchroCheckers\obj\Debug\ServiceSynchroCheckers.pdb
+C:\Users\Charline\source\repos\ServiceSynchroCheckers\ServiceSynchroCheckers\bin\MySql.Data.dll
+C:\Users\Charline\source\repos\ServiceSynchroCheckers\ServiceSynchroCheckers\bin\MySql.Data.xml
+C:\Users\Charline\source\repos\ServiceSynchroCheckers\ServiceSynchroCheckers\obj\Debug\ServiceSynchroCheckers.csproj.CopyComplete
