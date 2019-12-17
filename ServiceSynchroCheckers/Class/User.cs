@@ -9,7 +9,7 @@ using ServiceSynchroCheckers;
 using System.Configuration;
 
 namespace ServiceSynchroCheckers
-{ 
+{
     [DataContract]
     public class User
     {
@@ -78,10 +78,20 @@ namespace ServiceSynchroCheckers
             get { return _idRole; }
             set { _idRole = value; }
         }
+
+        private bool _isAvailable;
+
+        [DataMember]
+        public bool IsAvailable
+        {
+            get { return _isAvailable; }
+            set { _isAvailable = value; }
+        }
+
         #endregion
 
-
-        // Méthode SQL
+    
+        #region Méthodes SQL
         public User GetUserById(int id)
         {
             User user = new User();
@@ -99,24 +109,26 @@ namespace ServiceSynchroCheckers
                     user.Pseudo = dr.GetString(dr.GetOrdinal("pseudo"));
                     user.Mail = dr.GetString(dr.GetOrdinal("mail"));
                     user.Password = dr.GetString(dr.GetOrdinal("password"));
-                    if(!dr.IsDBNull(dr.GetOrdinal("score")))
+                    if (!dr.IsDBNull(dr.GetOrdinal("score")))
                     {
                         user.Score = dr.GetInt32(dr.GetOrdinal("score"));
                     }
                     user.CreatedAt = dr.GetDateTime(dr.GetOrdinal("created_at"));
                     user.IdRole = dr.GetInt32(dr.GetOrdinal("id_role"));
+                    user.IsAvailable = dr.GetBoolean(dr.GetOrdinal("is_available"));
                 }
                 cn.Close();
             }
             return user;
         }
 
+
         public bool AddUser(User user)
         {
             bool ok = false;
 
-            string query = "INSERT INTO user(pseudo, mail, password, score, id_role, created_at)" +
-                           "VALUES(?pseudo, ?mail, ?password, ?score, ?id_role, ?created_at)";
+            string query = "INSERT INTO user(pseudo, mail, password, score, id_role, created_at, is_available)" +
+                           "VALUES(?pseudo, ?mail, ?password, ?score, ?id_role, ?created_at, ?is_available)";
 
 
             using (MySqlConnection cn = new MySqlConnection(cs))
@@ -126,10 +138,11 @@ namespace ServiceSynchroCheckers
                 {
                     cmd.Parameters.AddWithValue("?pseudo", user.Pseudo);
                     cmd.Parameters.AddWithValue("?mail", user.Mail);
-                    cmd.Parameters.AddWithValue("?passwoord", user.Password);
+                    cmd.Parameters.AddWithValue("?password", user.Password);
                     cmd.Parameters.AddWithValue("?score", user.Score);
                     cmd.Parameters.AddWithValue("?id_role", user.IdRole);
                     cmd.Parameters.AddWithValue("?created_at", user.CreatedAt);
+                    cmd.Parameters.AddWithValue("?is_available", user.IsAvailable);
 
                     ok = Convert.ToBoolean(cmd.ExecuteNonQuery());
                 }
@@ -142,7 +155,7 @@ namespace ServiceSynchroCheckers
         {
             bool ok = false;
 
-            string query = "Update user set pseudo = ?pseudo, mail = ?mail, password = ?password, score = ?score, id_role = ?id_role, created_at = ?created_at WHERE id_user = ?id_user"; 
+            string query = "UPDATE user SET pseudo = ?pseudo, mail = ?mail, password = ?password, score = ?score, id_role = ?id_role, created_at = ?created_at, is_available = ?is_available WHERE id_user = ?id_user";
             using (MySqlConnection cn = new MySqlConnection(cs))
             {
                 cn.Open();
@@ -155,6 +168,7 @@ namespace ServiceSynchroCheckers
                     cmd.Parameters.AddWithValue("?score", user.Score);
                     cmd.Parameters.AddWithValue("?id_role", user.IdRole);
                     cmd.Parameters.AddWithValue("?created_at", user.CreatedAt);
+                    cmd.Parameters.AddWithValue("?is_available", user.IsAvailable);
 
                     ok = Convert.ToBoolean(cmd.ExecuteNonQuery());
                 }
@@ -168,7 +182,7 @@ namespace ServiceSynchroCheckers
         {
             bool ok = false;
             string query = "DELETE FROM user WHERE id_user = ?id";
-            
+
             using (MySqlConnection cn = new MySqlConnection(cs))
             {
                 cn.Open();
@@ -181,5 +195,75 @@ namespace ServiceSynchroCheckers
             }
             return ok;
         }
+
+        public List<User> GetUsersAvailable()
+        {
+            List<User> users = new List<User>();
+
+            string query = "SELECT * FROM user WHERE is_available IS TRUE";
+
+            using (MySqlConnection cn = new MySqlConnection(cs))
+            {
+                cn.Open();
+                MySqlDataReader dr = null;
+                using (MySqlCommand cmd = new MySqlCommand(query, cn))
+                {
+                    dr = cmd.ExecuteReader();
+
+                    if (dr.HasRows)
+                    {
+                        while (dr.Read())
+                        {
+
+                            User user = new User();
+                            user.Id = dr.GetInt32(dr.GetOrdinal("id_user"));
+                            user.Pseudo = dr.GetString(dr.GetOrdinal("pseudo"));
+                            user.Mail = dr.GetString(dr.GetOrdinal("mail"));
+                            user.Password = dr.GetString(dr.GetOrdinal("password"));
+                            if (!dr.IsDBNull(dr.GetOrdinal("score")))
+                            {
+                                user.Score = dr.GetInt32(dr.GetOrdinal("score"));
+                            }
+                            user.CreatedAt = dr.GetDateTime(dr.GetOrdinal("created_at"));
+                            user.IdRole = dr.GetInt32(dr.GetOrdinal("id_role"));
+                            user.IsAvailable = dr.GetBoolean(dr.GetOrdinal("is_available"));
+
+                            users.Add(user);
+                        }
+
+                    }
+
+                    dr.Close();
+
+                    cn.Close();
+                }
+                return users;
+            }
+
+        } 
+        
+        public bool UpdateAvailabilityUser(int id, bool is_available)
+        {
+            bool ok = false;
+
+            string query = "UPDATE user SET is_available = ?is_available WHERE id_user = ?id_user";
+
+            using(MySqlConnection cn = new MySqlConnection(cs))
+            {
+                cn.Open();
+                using (MySqlCommand cmd = new MySqlCommand(query, cn))
+                {
+                    cmd.Parameters.AddWithValue("?id_user", id);
+                    cmd.Parameters.AddWithValue("?is_available", is_available);
+
+                    ok = Convert.ToBoolean(cmd.ExecuteNonQuery());
+                }
+                cn.Close();
+            }
+            return ok;
+        }
+
+        #endregion
+
     }
 }
