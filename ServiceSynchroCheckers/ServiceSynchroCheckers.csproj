@@ -68,16 +68,16 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class\Game.cs" />
-    <Compile Include="Class\GameUser.cs" />
-    <Compile Include="Class\Piece.cs" />
-    <Compile Include="Class\Role.cs" />
+    <Compile Include="Classes\Game.cs" />
+    <Compile Include="Classes\GameUser.cs" />
+    <Compile Include="Classes\Piece.cs" />
+    <Compile Include="Classes\Role.cs" />
     <Compile Include="ServiceSynchroCheckers.svc.cs">
       <DependentUpon>ServiceSynchroCheckers.svc</DependentUpon>
     </Compile>
     <Compile Include="IServiceSynchroCheckers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Class\User.cs" />
+    <Compile Include="Classes\User.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

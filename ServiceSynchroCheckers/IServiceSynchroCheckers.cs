@@ -1,4 +1,4 @@
-﻿using ServiceSynchroCheckers.Class;
+﻿using ServiceSynchroCheckers.Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;

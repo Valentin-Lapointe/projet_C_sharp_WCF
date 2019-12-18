@@ -8,7 +8,7 @@ using System.Web;
 using ServiceSynchroCheckers;
 using System.Configuration;
 
-namespace ServiceSynchroCheckers
+namespace ServiceSynchroCheckers.Classes
 {
     [DataContract]
     public class User

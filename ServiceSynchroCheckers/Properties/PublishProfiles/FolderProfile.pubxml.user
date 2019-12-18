@@ -9,17 +9,20 @@ en modifiant ce fichier MSBuild. Pour en savoir plus à ce sujet, visitez https:
     <_PublishTargetUrl>C:\Users\Charline\source\repos\ServiceSynchroCheckers\ServiceSynchroCheckers\bin\Release\Publish</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
+    <File Include="bin/MySql.Data.dll">
+      <publishTime>07/10/2019 17:08:40</publishTime>
+    </File>
     <File Include="bin/ServiceSynchroCheckers.dll">
-      <publishTime>11/22/2019 09:13:16</publishTime>
+      <publishTime>12/18/2019 11:07:28</publishTime>
     </File>
     <File Include="bin/ServiceSynchroCheckers.pdb">
-      <publishTime>11/22/2019 09:13:16</publishTime>
+      <publishTime>12/18/2019 11:07:28</publishTime>
     </File>
     <File Include="ServiceSynchroCheckers.svc">
       <publishTime>11/20/2019 14:01:20</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>11/22/2019 08:53:35</publishTime>
+      <publishTime>12/18/2019 10:55:15</publishTime>
     </File>
   </ItemGroup>
 </Project>

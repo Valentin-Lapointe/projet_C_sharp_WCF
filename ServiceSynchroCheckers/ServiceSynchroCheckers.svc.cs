@@ -1,11 +1,11 @@
-﻿using ServiceSynchroCheckers.Class;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using ServiceSynchroCheckers.Classes;
 
 namespace ServiceSynchroCheckers
 {
@@ -36,6 +36,7 @@ namespace ServiceSynchroCheckers
         {
             User user = new User().GetUserById(id);
             return user;
+            //return new User().GetUserById(id);
         }
 
         public bool UpdateUser(User user)

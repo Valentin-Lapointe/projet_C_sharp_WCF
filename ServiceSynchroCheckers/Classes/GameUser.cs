@@ -6,7 +6,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Web;
 
-namespace ServiceSynchroCheckers.Class
+namespace ServiceSynchroCheckers.Classes
 {
     [DataContract]
     public class GameUser
