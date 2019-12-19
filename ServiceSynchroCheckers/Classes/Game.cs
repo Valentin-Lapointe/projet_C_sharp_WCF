@@ -76,6 +76,28 @@ namespace ServiceSynchroCheckers.Classes
             }
             return game;
         }
+        public Game GetLastGame()
+        {
+            Game game = new Game();
+            string query = "SELECT * FROM game ORDER BY id_game DESC LIMIT 1";
+            using (MySqlConnection cn = new MySqlConnection(cs))
+            {
+                cn.Open();
+                MySqlDataReader dr = null;
+                using (MySqlCommand cmd = new MySqlCommand(query, cn))
+                {
+                    dr = cmd.ExecuteReader();
+                    dr.Read();
+                    game.Id = dr.GetInt32(dr.GetOrdinal("id_game"));
+                    game.Name = dr.GetString(dr.GetOrdinal("name"));
+                    game.CreatedAt = dr.GetDateTime(dr.GetOrdinal("created_at"));
+                    game.EndedAt = dr.IsDBNull(dr.GetOrdinal("ended_at")) ? null : (DateTime?)dr.GetDateTime(dr.GetOrdinal("ended_at"));
+
+                }
+                cn.Close();
+            }
+            return game;
+        }
 
         public bool AddGame(Game game)
         {
@@ -117,8 +139,7 @@ namespace ServiceSynchroCheckers.Classes
                     ok = Convert.ToBoolean(cmd.ExecuteNonQuery());
                 }
                 cn.Close();
-            }
-
+            } 
             return ok;
         }
 

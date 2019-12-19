@@ -43,7 +43,7 @@ namespace ServiceSynchroCheckers
         Game GetGameByIdGame(int id);
 
         [OperationContract]
-        bool AddGame(Game game);
+        Game AddGame(Game game);
 
         [OperationContract]
         bool UpdateGame(Game game);

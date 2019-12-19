@@ -68,14 +68,19 @@ namespace ServiceSynchroCheckers
 
         #region Game
 
-        public bool AddGame(Game game)
+        public Game AddGame(Game game)
         {
+            Game lastGame = new Game();
             bool ok = false;
             if(game != null)
             {
                 ok = new Game().AddGame(game);
+                if (ok)
+                {
+                    lastGame = new Game().GetLastGame();
+                }
             }
-            return ok;
+            return lastGame;
         }
         
         public bool DeleteGame(int id)
