@@ -7,3 +7,4 @@ C:\Users\Charline\source\repos\ServiceSynchroCheckers\ServiceSynchroCheckers\obj
 C:\Users\Charline\source\repos\ServiceSynchroCheckers\ServiceSynchroCheckers\obj\Debug\ServiceSynchroCheckers.csproj.CopyComplete
 C:\Users\Charline\source\repos\ServiceSynchroCheckers\ServiceSynchroCheckers\obj\Debug\ServiceSynchroCheckers.dll
 C:\Users\Charline\source\repos\ServiceSynchroCheckers\ServiceSynchroCheckers\obj\Debug\ServiceSynchroCheckers.pdb
+C:\Users\Charline\source\repos\ServiceSynchroCheckers\ServiceSynchroCheckers\obj\Debug\ServiceSynchroCheckers.csprojAssemblyReference.cache

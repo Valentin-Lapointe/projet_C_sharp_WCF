@@ -13,6 +13,10 @@ namespace ServiceSynchroCheckers
     public interface IServiceSynchroCheckers
     {
         #region User
+
+        [OperationContract]
+        List<User> GetUsers();
+
         [OperationContract]
         User GetUserByIdUser(int id);
 
@@ -30,7 +34,7 @@ namespace ServiceSynchroCheckers
 
         [OperationContract]
         bool UpdateAvailabilityUser(int id, bool is_available);
-
+        
         #endregion
 
         #region Game

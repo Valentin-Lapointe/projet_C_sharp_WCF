@@ -92,6 +92,50 @@ namespace ServiceSynchroCheckers.Classes
 
     
         #region Méthodes SQL
+
+        public List<User> GetUsers()
+        {
+            List<User> users = new List<User>();
+
+            string query = "SELECT * FROM user";
+
+            using (MySqlConnection cn = new MySqlConnection(cs))
+            {
+                cn.Open();
+                MySqlDataReader dr = null;
+                using (MySqlCommand cmd = new MySqlCommand(query, cn))
+                {
+                    dr = cmd.ExecuteReader();
+
+                    if (dr.HasRows)
+                    {
+                        while (dr.Read())
+                        {
+                            User user = new User();
+                            user.Id = dr.GetInt32(dr.GetOrdinal("id_user"));
+                            user.Pseudo = dr.GetString(dr.GetOrdinal("pseudo"));
+                            user.Mail = dr.GetString(dr.GetOrdinal("mail"));
+                            user.Password = dr.GetString(dr.GetOrdinal("password"));
+                            if (!dr.IsDBNull(dr.GetOrdinal("score")))
+                            {
+                                user.Score = dr.GetInt32(dr.GetOrdinal("score"));
+                            }
+                            user.CreatedAt = dr.GetDateTime(dr.GetOrdinal("created_at"));
+                            user.IdRole = dr.GetInt32(dr.GetOrdinal("id_role"));
+                            user.IsAvailable = dr.GetBoolean(dr.GetOrdinal("is_available"));
+
+                            users.Add(user);
+                        }
+                    }
+                    dr.Close();
+
+                    cn.Close();
+                }
+            }
+            return users;
+        }
+
+
         public User GetUserById(int id)
         {
             User user = new User();

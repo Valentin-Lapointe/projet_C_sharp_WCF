@@ -34,9 +34,12 @@ namespace ServiceSynchroCheckers
 
         public User GetUserByIdUser(int id)
         {
-            User user = new User().GetUserById(id);
-            return user;
-            //return new User().GetUserById(id);
+            return new User().GetUserById(id);
+        }
+
+        public List<User> GetUsers()
+        {
+            return new User().GetUsers();
         }
 
         public bool UpdateUser(User user)
@@ -51,8 +54,7 @@ namespace ServiceSynchroCheckers
 
         public List<User> GetUsersAvailable()
         {
-            List<User> users = new User().GetUsersAvailable();
-            return users;
+            return new User().GetUsersAvailable();
         }
 
         // Vérifie si user existe ?
@@ -88,8 +90,7 @@ namespace ServiceSynchroCheckers
 
         public Game GetGameByIdGame(int id)
         {
-            Game game = new Game().GetGameById(id);
-            return game;
+            return new Game().GetGameById(id);
         }
 
         public bool UpdateGame(Game game)
@@ -128,8 +129,7 @@ namespace ServiceSynchroCheckers
 
         public Role GetRoleByIdRole(int id)
         {
-            Role role = new Role().GetRoleById(id);
-            return role;
+            return new Role().GetRoleById(id);
         }
 
         public bool UpdateRole(Role role)
@@ -168,8 +168,7 @@ namespace ServiceSynchroCheckers
 
         public GameUser GetGameUserByIdGameUser(int id)
         {
-            GameUser gameUser = new GameUser().GetGameUserById(id);
-            return gameUser;
+            return new GameUser().GetGameUserById(id);
         }
 
         public bool UpdateGameUser(GameUser gameUser)
@@ -208,8 +207,7 @@ namespace ServiceSynchroCheckers
 
         public Piece GetPieceByIdPiece(int id)
         {
-            Piece piece = new Piece().GetPieceById(id);
-            return piece;
+            return new Piece().GetPieceById(id);
         }
 
         public bool UpdatePiece(Piece piece)
